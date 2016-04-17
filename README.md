@@ -1,2 +1,12 @@
 # BlogSampleCode
 This is the code repository for all the sample codes in my blogs.
+You can find the blogs corresponding to these codes in my Jianshu pages: [AC3's Blogs](http://www.jianshu.com/users/2c57671fa68b/latest_articles)
+
+### 1) UIViewOperation:
+Originally, we would like to operate the UIView's layout by manipulating the frame of the view. But in some cases, there would be better to operate the UIView by manipulating the autolayout constraints to adjust the frame of the view indirectly.
+
+### 2) UIViewControllerTranstition
+There are multiple ways to transit different views by UIViewController APIs. I summarized these ways and show you how they work.
+
+### 3) TableTest
+In this sample, I show you some key technology to create customize tableviews as well as some tricky skill to avoid errors.   
