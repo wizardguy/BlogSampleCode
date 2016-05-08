@@ -9,4 +9,7 @@ Originally, we would like to operate the UIView's layout by manipulating the fra
 There are multiple ways to transit different views by UIViewController APIs. I summarized these ways and show you how they work.
 
 ### 3) TableTest
-In this sample, I show you some key technology to create customize tableviews as well as some tricky skill to avoid errors.   
+In this sample, I show you some key technology to create customize tableviews as well as some tricky skill to avoid errors.
+
+### 4) VIPERTest
+VIPER is a new architecture for app design. I build a test project to have a try of using VIPER to create a simple app. Wish you get the core idea of VIPER concept in this sample and refresh your understanding of the common MVC architecture.
