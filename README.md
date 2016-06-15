@@ -13,3 +13,6 @@ In this sample, I show you some key technology to create customize tableviews as
 
 ### 4) VIPERTest
 VIPER is a new architecture for app design. I build a test project to have a try of using VIPER to create a simple app. Wish you get the core idea of VIPER concept in this sample and refresh your understanding of the common MVC architecture.
+
+### 5) ScrollTest
+ScrollTest is a demo that shows the basic gesture processing logic in UIScrollView. Understanding this logic would make it easy to implement gesture handling on the subview of the UIScrollView.
