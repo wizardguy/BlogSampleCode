@@ -18,4 +18,4 @@ VIPER is a new architecture for app design. I build a test project to have a try
 ScrollTest is a demo that shows the basic gesture processing logic in UIScrollView. Understanding this logic would make it easy to implement gesture handling on the subview of the UIScrollView.
 
 ### 6) ShadowTest
-A demo which is designed to indicate the relation between view and layer when processing the round coner and shadow, with a bunch of switches that control different properties, make different effects. Also it tries to show the overoll effect when doing round coner and shadow in scroll view. And how it effect the performance when using resterization or not.
+A demo which is designed to indicate the relation between view and layer when processing the round coner and shadow, with a bunch of switches that control different properties, making different effects. Also it tries to show the overoll effect when doing round coner and shadow in scroll view. And how it effect the performance when using resterization or not.
