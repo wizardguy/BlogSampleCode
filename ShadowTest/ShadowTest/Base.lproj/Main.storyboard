@@ -95,6 +95,9 @@
                                         <include reference="Y84-bp-0mb"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="shadowPathChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="XdF-l1-5q1"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="B9q-qj-yYY">
                                 <rect key="frame" x="-25" y="-15" width="51" height="31"/>
@@ -191,7 +194,7 @@
                                     <rect key="frame" x="20" y="195" width="80" height="21"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="??" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9V4-ri-DmK">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="set shadow path" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9V4-ri-DmK">
                                 <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fXg-gd-gQA"/>
@@ -204,8 +207,7 @@
                                         <exclude reference="fXg-gd-gQA"/>
                                     </mask>
                                 </variation>
-                                <variation key="widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="269.5" y="195" width="49.5" height="21"/>
+                                <variation key="widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="fXg-gd-gQA"/>
                                     </mask>
@@ -646,6 +648,7 @@
                         <outlet property="sLayerShadow" destination="B8u-PZ-KaW" id="AWl-VN-Qml"/>
                         <outlet property="sMask" destination="5Hy-ur-n6e" id="MWz-b9-UrO"/>
                         <outlet property="sResterize" destination="3th-CI-cEn" id="ip3-wV-h4H"/>
+                        <outlet property="sShadowPath" destination="mab-oP-J3R" id="upl-uU-pk9"/>
                         <outlet property="sSubView" destination="B9q-qj-yYY" id="1aC-2w-Pwk"/>
                         <outlet property="sSubViewShadow" destination="Xlo-iw-gfk" id="z6R-ki-oq4"/>
                     </connections>

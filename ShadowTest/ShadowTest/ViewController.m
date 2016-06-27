@@ -216,17 +216,24 @@
         shadowView.layer.shadowColor = [UIColor grayColor].CGColor;
         shadowView.layer.shadowOffset = CGSizeMake(5.0, 5.0);
         shadowView.layer.shadowOpacity = 0.6;
-        shadowView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:shadowView.bounds cornerRadius:20.0].CGPath;
-        
+        if (self.sShadowPath.on) {
+            shadowView.layer.shadowPath = [UIBezierPath bezierPathWithRoundedRect:shadowView.bounds cornerRadius:20.0].CGPath;
+        }
 
         UIImageView *subImageView = [view viewWithTag:1];
         subImageView.layer.cornerRadius = 20.0;
         subImageView.image = _image;
         [subImageView.layer setMasksToBounds:YES];
         
+        view.layer.rasterizationScale = [UIScreen mainScreen].scale;
         view.layer.shouldRasterize = self.sResterize.on;
     }
     return view;
+}
+
+
+- (IBAction)shadowPathChange:(id)sender {
+    [self.swipeView reloadData];
 }
 
 
@@ -259,9 +266,21 @@
                            forMode:NSDefaultRunLoopMode];
 }
 
+
+static int performanceCounter = 0;
+static CFTimeInterval totalTime = 0.0;
+
 - (void)handleDisplayLink:(CADisplayLink *)displayLink
 {
-    self.fps.text = [NSString stringWithFormat:@"%f",1.0 / displayLink.duration];
+    totalTime += displayLink.duration;
+    performanceCounter++;
+    if (performanceCounter % 30 == 0) {
+        CFTimeInterval avg = totalTime / performanceCounter;
+        self.delay.text = [NSString stringWithFormat:@"%0.2f ms", avg];
+        self.fps.text = [NSString stringWithFormat:@"%0.2f fps",1.0 / avg];
+        performanceCounter = 0;
+        totalTime = 0.0;
+    }
 }
 
 - (void)stopDisplayLink

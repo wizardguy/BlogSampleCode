@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UISwitch *sSubViewShadow;
 @property (weak, nonatomic) IBOutlet UISwitch *sResterize;
 
+@property (weak, nonatomic) IBOutlet UISwitch *sShadowPath;
+
 @property (weak, nonatomic) IBOutlet UILabel *fps;
 
 

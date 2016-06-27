@@ -13,10 +13,10 @@
 		954ED9431D11004D00BFB3CE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 954ED9411D11004D00BFB3CE /* Main.storyboard */; };
 		954ED9451D11004D00BFB3CE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954ED9441D11004D00BFB3CE /* Assets.xcassets */; };
 		954ED9481D11004D00BFB3CE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 954ED9461D11004D00BFB3CE /* LaunchScreen.storyboard */; };
-		954ED9501D110BC300BFB3CE /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = 954ED94F1D110BC300BFB3CE /* head.png */; };
-		954ED9541D11347000BFB3CE /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 954ED9531D11347000BFB3CE /* SwipeView.m */; };
 		954ED9561D11530900BFB3CE /* ItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 954ED9551D11530900BFB3CE /* ItemView.xib */; };
 		954ED95A1D11994800BFB3CE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 954ED9591D11994800BFB3CE /* QuartzCore.framework */; };
+		954ED95E1D192D8D00BFB3CE /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 954ED95D1D192D8D00BFB3CE /* SwipeView.m */; };
+		954ED9601D192DBA00BFB3CE /* head.png in Resources */ = {isa = PBXBuildFile; fileRef = 954ED95F1D192DBA00BFB3CE /* head.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,11 +30,11 @@
 		954ED9441D11004D00BFB3CE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954ED9471D11004D00BFB3CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		954ED9491D11004D00BFB3CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		954ED94F1D110BC300BFB3CE /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = head.png; path = ../../../Desktop/head.png; sourceTree = "<group>"; };
-		954ED9521D11347000BFB3CE /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
-		954ED9531D11347000BFB3CE /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
 		954ED9551D11530900BFB3CE /* ItemView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ItemView.xib; sourceTree = "<group>"; };
 		954ED9591D11994800BFB3CE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		954ED95C1D192D8D00BFB3CE /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		954ED95D1D192D8D00BFB3CE /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		954ED95F1D192DBA00BFB3CE /* head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = head.png; path = ../../../../Desktop/head.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +52,8 @@
 		954ED92C1D11004D00BFB3CE = {
 			isa = PBXGroup;
 			children = (
+				954ED95B1D192D8D00BFB3CE /* SwipeView */,
 				954ED9591D11994800BFB3CE /* QuartzCore.framework */,
-				954ED9511D11347000BFB3CE /* SwipeView */,
 				954ED9371D11004D00BFB3CE /* ShadowTest */,
 				954ED9361D11004D00BFB3CE /* Products */,
 			);
@@ -70,7 +70,7 @@
 		954ED9371D11004D00BFB3CE /* ShadowTest */ = {
 			isa = PBXGroup;
 			children = (
-				954ED94F1D110BC300BFB3CE /* head.png */,
+				954ED95F1D192DBA00BFB3CE /* head.png */,
 				954ED93B1D11004D00BFB3CE /* AppDelegate.h */,
 				954ED93C1D11004D00BFB3CE /* AppDelegate.m */,
 				954ED93E1D11004D00BFB3CE /* ViewController.h */,
@@ -93,14 +93,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		954ED9511D11347000BFB3CE /* SwipeView */ = {
+		954ED95B1D192D8D00BFB3CE /* SwipeView */ = {
 			isa = PBXGroup;
 			children = (
-				954ED9521D11347000BFB3CE /* SwipeView.h */,
-				954ED9531D11347000BFB3CE /* SwipeView.m */,
+				954ED95C1D192D8D00BFB3CE /* SwipeView.h */,
+				954ED95D1D192D8D00BFB3CE /* SwipeView.m */,
 			);
 			name = SwipeView;
-			path = ../Git/SwipeView/SwipeView;
+			path = ../../Git/SwipeView/SwipeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +134,7 @@
 				TargetAttributes = {
 					954ED9341D11004D00BFB3CE = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = KQ4NKAN7T7;
 					};
 				};
 			};
@@ -161,10 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				954ED9481D11004D00BFB3CE /* LaunchScreen.storyboard in Resources */,
-				954ED9501D110BC300BFB3CE /* head.png in Resources */,
 				954ED9561D11530900BFB3CE /* ItemView.xib in Resources */,
 				954ED9451D11004D00BFB3CE /* Assets.xcassets in Resources */,
 				954ED9431D11004D00BFB3CE /* Main.storyboard in Resources */,
+				954ED9601D192DBA00BFB3CE /* head.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,9 +177,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				954ED9401D11004D00BFB3CE /* ViewController.m in Sources */,
-				954ED9541D11347000BFB3CE /* SwipeView.m in Sources */,
 				954ED93D1D11004D00BFB3CE /* AppDelegate.m in Sources */,
 				954ED93A1D11004D00BFB3CE /* main.m in Sources */,
+				954ED95E1D192D8D00BFB3CE /* SwipeView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,11 +291,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShadowTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dennis.test.ShadowTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -302,11 +306,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ShadowTest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dennis.test.ShadowTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -329,6 +336,7 @@
 				954ED94E1D11004D00BFB3CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
