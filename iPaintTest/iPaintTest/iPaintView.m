@@ -78,6 +78,11 @@
     self.paintLayer.flatteringPath = flag;
 }
 
+- (void)setAsyncDraw:(BOOL)flag
+{
+    self.paintLayer.drawingAsync = flag;
+}
+
 
 - (double)getAverageTime
 {
@@ -99,6 +104,8 @@
     UITouch *touch = [touches anyObject];
     CGPoint point = [touch locationInView:self];
     [self.paintLayer addNextPoint:point];
+    
+    [self.delegate updatePerformance:[self getAverageTime]];
 }
 
 

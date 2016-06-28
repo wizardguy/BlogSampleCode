@@ -38,5 +38,8 @@
 @property (assign, readwrite, nonatomic) float currentSize;
 
 
+
+- (void)updatePerformance:(double)time;
+
 @end
 

@@ -34,7 +34,7 @@ typedef NS_ENUM(NSUInteger, STROKETYPE) {
 - (void)setShowUpdatedRects:(BOOL)flag;
 - (void)setDrawDirtyRects:(BOOL)flag;
 - (void)setFlattenImage:(BOOL)flag;
-
+- (void)setAsyncDraw:(BOOL)flag;
 
 - (double)getAverageTime;
 

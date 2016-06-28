@@ -60,7 +60,7 @@
 @end
 
 
-const int kPaintLayerMaxPoints = 100;
+const int kPaintLayerMaxPoints = 50;
 const int kPaintLayerMaxPath = 5;
 
 @interface iPaintLayer ()
@@ -117,24 +117,19 @@ const int kPaintLayerMaxPath = 5;
 }
 
 
-
-CGImageRef flip (CGImageRef im) {
-    CGSize sz = CGSizeMake(CGImageGetWidth(im), CGImageGetHeight(im));
-    UIGraphicsBeginImageContextWithOptions(sz, NO, 0);
-    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, sz.width, sz.height), im);
-    CGImageRef result = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
-    UIGraphicsEndImageContext();
-    return result;
-}
-
-
-
-
 - (void)drawInContext:(CGContextRef)ctx
 {
     uint64_t drawStart  = mach_absolute_time();
     
-    CGContextSaveGState(ctx);
+    // If we have the flatten image, draw it first.
+    if (self.flattenImage) {
+        // Flip the image, due to the difference of coordinate system between UIKit and CoreGraphic.
+        CGContextSaveGState(ctx);
+        CGContextTranslateCTM(ctx, 0, self.flattenImage.size.height);
+        CGContextScaleCTM(ctx, 1.0, -1.0);
+        CGContextDrawImage(ctx, self.bounds, self.flattenImage.CGImage);
+        CGContextRestoreGState(ctx);
+    }
     
     // Empty record, Clear the screen
     if (![self.records count]) {
@@ -142,12 +137,6 @@ CGImageRef flip (CGImageRef im) {
         CGContextFillRect(ctx, self.frame);
     }
     else {
-        
-        // If we have the flatten image, draw it first.
-        if (self.flattenImage) {
-            CGContextDrawImage(ctx, self.bounds, self.flattenImage.CGImage);
-        }
-        
         // Continue to draw the path
         for (iPaintRecord *record in self.records) {
             
@@ -180,8 +169,6 @@ CGImageRef flip (CGImageRef im) {
         CGContextSetStrokeColorWithColor(ctx, self.debugColor.CGColor);
         CGContextStrokeRect(ctx, clipRect);
     }
-    
-    CGContextRestoreGState(ctx);
     
     uint64_t drawEnd = mach_absolute_time();
     [self recordPerformanceMetricsWithFrameStart:drawStart end:drawEnd];
@@ -220,15 +207,22 @@ CGImageRef flip (CGImageRef im) {
     self.previousPoint = self.currentPoint;
     self.currentPoint = point;
     
-    /* add the ppint to our path */
-    [self.currentRecord updatePathLineWithPoint:point];
-    
     /* flatten the path if it is too long */
     if (self.flatteringPath && (self.records.count > kPaintLayerMaxPath ||
                                 self.currentRecord.numPoints > kPaintLayerMaxPoints)) {
         [self flattenPath];
+        
+        /* after flatten, clear all the records */
+        [self.records removeAllObjects];
+        
+        /* begin a new one at current point */
+        [self beginPathAtPoint:self.previousPoint];
+        
         return;
     }
+    
+    /* add the ppint to our path */
+    [self.currentRecord updatePathLineWithPoint:point];
     
     if (self.drawingDirtyRects) {
         /* calculate our dirty rect */
@@ -277,26 +271,44 @@ CGImageRef flip (CGImageRef im) {
 }
 
 
+/*
+CGImageRef flip (CGImageRef im) {
+    CGSize sz = CGSizeMake(CGImageGetWidth(im), CGImageGetHeight(im));
+    UIGraphicsBeginImageContextWithOptions(sz, YES, 0);
+    CGContextDrawImage(UIGraphicsGetCurrentContext(), CGRectMake(0, 0, sz.width, sz.height), im);
+    CGImageRef result = [UIGraphicsGetImageFromCurrentImageContext() CGImage];
+    UIGraphicsEndImageContext();
+    
+    return result;
+}
+ */
+
+
 - (void)flattenPath
 {
-    UIGraphicsBeginImageContextWithOptions(self.bounds.size, YES, self.contentsScale);
+    uint64_t start = mach_absolute_time();
+    
+    CGRect rect = self.bounds;
+    
+    UIGraphicsBeginImageContextWithOptions(rect.size, YES, self.contentsScale);
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetFillColorWithColor(context, self.bgColor.CGColor);
-    CGContextFillRect(context, self.bounds);
+    CGContextFillRect(context, rect);
     [self renderInContext:context]; // Here, renderInContext: will call drawInContext:
-    UIImage *tempimg = UIGraphicsGetImageFromCurrentImageContext();
-    
+    self.flattenImage = UIGraphicsGetImageFromCurrentImageContext();
+    //UIImage *tempimg = UIGraphicsGetImageFromCurrentImageContext();
+
     UIGraphicsEndImageContext();
     
-    // Flip the image, due to the difference of coordinate system between UIKit and CoreGraphic.
-    self.flattenImage = [UIImage imageWithCGImage:flip(tempimg.CGImage)];
+    // I intended to flip the image here, but it seens that
+    // it costs too much to redraw the image twice.
+    // So I move the flip into the drawInRect.
+    //self.flattenImage = [UIImage imageWithCGImage:flip(tempimg.CGImage)];
     
-    /* after flatten, clear all the records */
-    [self.records removeAllObjects];
-    /* begin a new one at current point */
-    [self beginPathAtPoint:self.previousPoint];
-    [self addNextPoint:self.currentPoint];
+    uint64_t end = mach_absolute_time();
+    
+    NSLog(@"%lf ms", MachTimeToMillisecs(end - start));
 }
 
 

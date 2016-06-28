@@ -32,8 +32,10 @@
     self.currentColor = [UIColor redColor];
     lastColor = self.currentColor;
     
+    self.paintView.delegate = self;
+    
     [self updateColor:self.currentColor Button:self.btnRed];
-    [self startDisplayLink];
+    //[self startDisplayLink];
 }
 
 
@@ -153,11 +155,17 @@
     [self.paintView setDrawDirtyRects:self.sDirtyRect.on];
 }
 
+- (IBAction)asyncDraw:(id)sender {
+    [self.paintView setAsyncDraw:self.sDrawAsync.on];
+}
+
+
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 
 
 - (void)startDisplayLink
@@ -169,6 +177,7 @@
 }
 
 
+/*
 static int performanceCounter = 0;
 //static CFTimeInterval totalTime = 0.0;
 
@@ -176,7 +185,7 @@ static int performanceCounter = 0;
 {
     //totalTime += displayLink.duration;
     performanceCounter++;
-    if (performanceCounter % 30 == 0) {
+    if (performanceCounter == 30) {
         //CFTimeInterval avg = totalTime / performanceCounter;
         //self.txtDrawTime.text = [NSString stringWithFormat:@"%0.2f ms", avg];
         
@@ -184,7 +193,8 @@ static int performanceCounter = 0;
         self.txtDrawTime.text = [NSString stringWithFormat:@"%0.1f ms", time];
         
         //self.txtFPS.text = [NSString stringWithFormat:@"%0.1f fps", 1.0 / avg];
-        double fps = time < 16.66 ? 60.0 : 1000.0 / time;
+        //double fps = time < 16.66 ? 60.0 : 1000.0 / time;
+    double fps = 1.0 / displayLink.duration;
         self.txtFPS.text = [NSString stringWithFormat:@"%0.1f fps", fps];
         
         performanceCounter = 0;
@@ -198,7 +208,13 @@ static int performanceCounter = 0;
     self.displayLink = nil;
 }
 
+*/
 
-
+- (void)updatePerformance:(double)time
+{
+    self.txtDrawTime.text = [NSString stringWithFormat:@"%0.1f ms", time];
+    double fps = time < 16.67 ? 60.0 : 1000.0 / time;
+    self.txtFPS.text = [NSString stringWithFormat:@"%0.1f fps", fps];
+}
 
 @end
