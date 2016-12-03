@@ -19,3 +19,6 @@ ScrollTest is a demo that shows the basic gesture processing logic in UIScrollVi
 
 ### 6) ShadowTest
 A demo which is designed to indicate the relation between view and layer when processing the round coner and shadow, with a bunch of switches that control different properties, making different effects. Also it tries to show the overoll effect when doing round coner and shadow in scroll view. And how it effect the performance when using resterization or not.
+
+### 7) iPaintTest
+I worte a demo which is similar to an official demo presented on WWDC2012 Session 506 - "optimizing 2D graphic and animation performance". I will show different optimizations of 2D graphic performance in this demo.
